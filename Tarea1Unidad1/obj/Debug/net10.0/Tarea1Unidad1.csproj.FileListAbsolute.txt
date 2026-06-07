@@ -1,0 +1,15 @@
+C:\Users\corre\TareasPOO\Tarea1U1\Tarea1Unidad1\bin\Debug\net10.0\Tarea1Unidad1.exe
+C:\Users\corre\TareasPOO\Tarea1U1\Tarea1Unidad1\bin\Debug\net10.0\Tarea1Unidad1.deps.json
+C:\Users\corre\TareasPOO\Tarea1U1\Tarea1Unidad1\bin\Debug\net10.0\Tarea1Unidad1.runtimeconfig.json
+C:\Users\corre\TareasPOO\Tarea1U1\Tarea1Unidad1\bin\Debug\net10.0\Tarea1Unidad1.dll
+C:\Users\corre\TareasPOO\Tarea1U1\Tarea1Unidad1\bin\Debug\net10.0\Tarea1Unidad1.pdb
+C:\Users\corre\TareasPOO\Tarea1U1\Tarea1Unidad1\obj\Debug\net10.0\Tarea1Unidad1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\corre\TareasPOO\Tarea1U1\Tarea1Unidad1\obj\Debug\net10.0\Tarea1Unidad1.AssemblyInfoInputs.cache
+C:\Users\corre\TareasPOO\Tarea1U1\Tarea1Unidad1\obj\Debug\net10.0\Tarea1Unidad1.AssemblyInfo.cs
+C:\Users\corre\TareasPOO\Tarea1U1\Tarea1Unidad1\obj\Debug\net10.0\Tarea1Unidad1.csproj.CoreCompileInputs.cache
+C:\Users\corre\TareasPOO\Tarea1U1\Tarea1Unidad1\obj\Debug\net10.0\Tarea1Unidad1.sourcelink.json
+C:\Users\corre\TareasPOO\Tarea1U1\Tarea1Unidad1\obj\Debug\net10.0\Tarea1Unidad1.dll
+C:\Users\corre\TareasPOO\Tarea1U1\Tarea1Unidad1\obj\Debug\net10.0\refint\Tarea1Unidad1.dll
+C:\Users\corre\TareasPOO\Tarea1U1\Tarea1Unidad1\obj\Debug\net10.0\Tarea1Unidad1.pdb
+C:\Users\corre\TareasPOO\Tarea1U1\Tarea1Unidad1\obj\Debug\net10.0\Tarea1Unidad1.genruntimeconfig.cache
+C:\Users\corre\TareasPOO\Tarea1U1\Tarea1Unidad1\obj\Debug\net10.0\ref\Tarea1Unidad1.dll
