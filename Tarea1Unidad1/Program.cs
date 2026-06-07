@@ -1,4 +1,4 @@
-﻿using Tarea1Unidad1.Ejercicios;
+﻿using Tarea1Unidad1.ClasesParaEjercicios;
 
 namespace Tarea1Unidad1
 {
@@ -7,11 +7,11 @@ namespace Tarea1Unidad1
         static void Main(string[]args)
         {
             // Ejercicio1();
-            Ejercicio2();
+            // Ejercicio2();
             // Ejercicio3();
             // Ejercicio4();
             // Ejercicio5();
-            // Ejercicio6();
+            Ejercicio6();
             // Ejercicio7();
             // Ejercicio8();
             // Ejercicio9();
@@ -58,7 +58,11 @@ namespace Tarea1Unidad1
         }
         static void Ejercicio2()
         {
-            
+            /*
+            El programa muestra un menu de seleccion y lo almacena en una variable, en caso de que elijan salir el programa se cerrara
+            al preguntar la temperatura base y a cual la quieren convertir la variable resultado almacena lo que devuelve la clase 
+            convertir temperatura donde AdministrarConversiones se encarga de asignar que tipo de conversion se hará,
+            */
             Console.WriteLine("Ingrese el tipo de temperatura que desea convertir (Ingrese el numero correspondiente a su elección)");
             Console.WriteLine("1. Celcius\n2. Fahrenheit\n3. Kelvin\n4. Salir");
             int.TryParse(Console.ReadLine(), out int TemperaturaBase);
@@ -81,19 +85,80 @@ namespace Tarea1Unidad1
         }
         static void Ejercicio3()
         {
-            
+            Console.WriteLine("Ingrese la cantidad de Lempiras: ");
+            int.TryParse(Console.ReadLine(), out int Monto);
+
+            GestionarDinero gestionarDinero = new GestionarDinero(Monto);
         }
         static void Ejercicio4()
         {
+            Console.WriteLine("Ingrese el monto de dinero: ");
+            int.TryParse(Console.ReadLine(), out int Monto);
+            Console.WriteLine("Ingrese la tasa de interes anual en porcentaje: ");
+            int.TryParse(Console.ReadLine(), out int InteresAnual);
+            Console.WriteLine("Ingrese el plazo en meses: ");
+            int.TryParse(Console.ReadLine(), out int Plazo);
+            Console.Clear();
+            decimal CuotaMensualFija = CalculoCuotaEInteres.cuotaMensualFija(Monto,InteresAnual,Plazo); 
+            decimal InteresTotal = CalculoCuotaEInteres.InteresTotal(CuotaMensualFija,Plazo,Monto);
+            if(CuotaMensualFija < 0 || InteresTotal < 0)
+            {
+                Console.WriteLine("Los valores ingresados no son validos");
+            }
+            else
+            {
+                Console.WriteLine($"La cuota mensual fija es : {CuotaMensualFija:N2}");
+                Console.WriteLine($"El interes total es : {InteresTotal:N2}"); 
+            }
             
         }
         static void Ejercicio5()
         {
-            
+            Console.WriteLine("!!!!! Ingrese las horas en formato de 24hrs !!!!!");
+            //registra la hora 1
+            Console.WriteLine("Ingrese la hora #1: ");
+            int.TryParse(Console.ReadLine(), out int hora1);
+            Console.WriteLine("Ingrese la hora minuto #1: ");
+            int.TryParse(Console.ReadLine(), out int minuto1);
+            Console.WriteLine("Ingrese la hora segundo #1: ");
+            int.TryParse(Console.ReadLine(), out int segundo1);
+            // registra la hora 2
+            Console.WriteLine("Ingrese la hora #2: ");
+            int.TryParse(Console.ReadLine(), out int hora2);
+            Console.WriteLine("Ingrese la hora minuto #2: ");
+            int.TryParse(Console.ReadLine(), out int minuto2);
+            Console.WriteLine("Ingrese la hora segundo #2: ");
+            int.TryParse(Console.ReadLine(), out int segundo2);
+            Console.Clear();
+            TimeSpan Hora1 = new TimeSpan(hora1,minuto1,segundo1);
+            TimeSpan Hora2 = new TimeSpan(hora2,minuto2,segundo2);
+            TimeSpan DiferenciaDeHora = Hora2 - Hora1;
+
+            int ResultadoHora = DiferenciaDeHora.Hours;
+            int ResultadoMinuto = DiferenciaDeHora.Minutes;
+            int ResultadoSegundo = DiferenciaDeHora.Seconds;
+
+            Console.WriteLine($"La diferencia de horas es de {ResultadoHora} horas, {ResultadoMinuto} minutos y {ResultadoSegundo} segundos.");
+
         }
         static void Ejercicio6()
         {
+            Console.WriteLine("Ingrese el numero de la eleccion que desea");
+            Console.WriteLine("1. Calcuar Area.\n2. Calcular Perimetro.\n3. Salir.");
+            int.TryParse(Console.ReadLine(), out int eleccionCalculo);
+            if(eleccionCalculo==3)return;
+            Console.Clear();
             
+            Console.WriteLine("Ingrese el número de la figura que desea calcular:");
+            Console.WriteLine("1. Circulo.\n2. Triángulo.\n3. Rectángulo.\n4. Trapecio.\n5. Salir.");
+            int.TryParse(Console.ReadLine(), out int eleccionForma);
+            if(eleccionCalculo==5)return;
+            Console.Clear();
+
+            decimal resultado = CalculoAreaYPerimetro.RegistroDeDatos(eleccionCalculo,eleccionForma);
+
+            Console.WriteLine($"El resultado de el calculo es: {resultado}");
+
         }
         static void Ejercicio7()
         {

@@ -1,4 +1,4 @@
-namespace Tarea1Unidad1.Ejercicios
+namespace Tarea1Unidad1.ClasesParaEjercicios
 {
     public class ConvertirTemperatura
     {
