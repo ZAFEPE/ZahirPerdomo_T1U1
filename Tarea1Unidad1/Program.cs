@@ -17,9 +17,9 @@ namespace Tarea1Unidad1
             // Ejercicio9();
             // Ejercicio10();
             // Ejercicio11();
-            Ejercicio12();
+            // Ejercicio12();
             // Ejercicio13();
-            // Ejercicio14();
+            Ejercicio14();
             // Ejercicio15();
             // Ejercicio16();
             // Ejercicio17();
@@ -249,11 +249,29 @@ namespace Tarea1Unidad1
         }
         static void Ejercicio13()
         {
-            Console.WriteLine("Ingrese");
+            Console.WriteLine("Ingrese el año: ");
+            int.TryParse(Console.ReadLine(), out int Anio);
+            Console.WriteLine("Ingrese el mes: ");
+            int.TryParse(Console.ReadLine(), out int Mes);
+            Console.WriteLine("Ingrese el año: ");
+            int.TryParse(Console.ReadLine(), out int Dia);
+
+            ValidarFecha.VerificarFechaReal(Dia,Mes,Anio);
+            
         }
         static void Ejercicio14()
         {
-            
+            Console.WriteLine("Ingrese el monto a retirar: ");
+            int.TryParse(Console.ReadLine(), out int MontoARetirar);
+            if(MontoARetirar <= 0)
+            {
+                Console.WriteLine("Los valores ingresados no son validos");
+                return;
+            }
+            Console.Clear();
+            CajeroAutomatico.GestionRetiros(MontoARetirar);
+
+
         }
         static void Ejercicio15()
         {

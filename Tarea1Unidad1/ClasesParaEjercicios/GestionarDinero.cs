@@ -53,13 +53,13 @@ namespace Tarea1Unidad1.ClasesParaEjercicios
 
             Console.WriteLine($"{Cantidad500} billetes de 500\n");
             Console.WriteLine($"{Cantidad200} billetes de 200\n");
-            Console.WriteLine($"{Cantidad200} billetes de 100\n");
-            Console.WriteLine($"{Cantidad200} billetes de 50\n");
-            Console.WriteLine($"{Cantidad200} billetes de 20\n");
-            Console.WriteLine($"{Cantidad200} billetes de 10\n");
-            Console.WriteLine($"{Cantidad200} billetes de 5\n");
-            Console.WriteLine($"{Cantidad200} billetes de 2\n");
-            Console.WriteLine($"{Cantidad200} billetes de 1\n");
+            Console.WriteLine($"{Cantidad100} billetes de 100\n");
+            Console.WriteLine($"{Cantidad50} billetes de 50\n");
+            Console.WriteLine($"{Cantidad20} billetes de 20\n");
+            Console.WriteLine($"{Cantidad10} billetes de 10\n");
+            Console.WriteLine($"{Cantidad5} billetes de 5\n");
+            Console.WriteLine($"{Cantidad2} billetes de 2\n");
+            Console.WriteLine($"{Cantidad1} billetes de 1\n");
             
         }
     }
