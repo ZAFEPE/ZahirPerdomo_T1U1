@@ -457,7 +457,60 @@ namespace Tarea1Unidad1
         }
         static void Ejercicio22()
         {
-            
+            Console.Clear();
+            Console.WriteLine("--- EJERCICIO 22: CALCULADORA CON MENÚ (Operaciones Encadenadas) ---");
+            double ultimoResultado = 0;
+            bool primerCalculo = true;
+            int op = 0;
+
+            do
+            {
+                Console.WriteLine($"\n[ Último Resultado Guardado: {ultimoResultado} ]");
+                Console.WriteLine("1. Sumar\n2. Restar\n3. Multiplicar\n4. Dividir\n5. Potencia\n6. Raíz Cuadrada\n7. Porcentaje\n8. Limpiar (CE)\n0. Salir");
+                Console.Write("Seleccione operación: ");
+                int.TryParse(Console.ReadLine(), out op);
+
+                if (op == 0) break;
+                if (op == 8) { ultimoResultado = 0; primerCalculo = true; Console.Clear(); continue; }
+
+                double num1 = ultimoResultado;
+                
+                if (primerCalculo && op != 6) 
+                {
+                    Console.Write("Ingrese el primer número: ");
+                    double.TryParse(Console.ReadLine(), out num1);
+                    primerCalculo = false;
+                }
+
+                double num2 = 0;
+                
+                if (op == 1 || op == 2 || op == 3 || op == 4 || op == 5 || op == 7)
+                {
+                    Console.Write(op == 5 ? "Ingrese el exponente: " : op == 7 ? "Ingrese el porcentaje (0-100): " : "Ingrese el siguiente número: ");
+                    double.TryParse(Console.ReadLine(), out num2);
+                }
+
+                switch (op)
+                {
+                    case 1: ultimoResultado = num1 + num2; break;
+                    case 2: ultimoResultado = num1 - num2; break;
+                    case 3: ultimoResultado = num1 * num2; break;
+                    case 4:
+                        if (num2 == 0) Console.WriteLine("Error: No se puede dividir entre cero.");
+                        else ultimoResultado = num1 / num2;
+                        break;
+                    case 5: ultimoResultado = Math.Pow(num1, num2); break;
+                    case 6:
+                        if (num1 < 0) Console.WriteLine("Error: Raíz imaginaria.");
+                        else { ultimoResultado = Math.Sqrt(num1); primerCalculo = false; }
+                        break;
+                    case 7: ultimoResultado = num1 * (num2 / 100); break;
+                    default: Console.WriteLine("Opción no válida."); break;
+                }
+
+                Console.WriteLine($"=> Resultado de la operación: {ultimoResultado}");
+
+            } while (op != 0);
         }
         static void Ejercicio23()
         {
