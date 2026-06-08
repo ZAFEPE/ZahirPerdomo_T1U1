@@ -19,12 +19,12 @@ namespace Tarea1Unidad1
             // Ejercicio11();
             // Ejercicio12();
             // Ejercicio13();
-            Ejercicio14();
+            // Ejercicio14();
             // Ejercicio15();
             // Ejercicio16();
             // Ejercicio17();
             // Ejercicio18();
-            // Ejercicio19();
+            Ejercicio19();
             // Ejercicio20();
             // Ejercicio21();
             // Ejercicio22();
@@ -275,23 +275,77 @@ namespace Tarea1Unidad1
         }
         static void Ejercicio15()
         {
-            
+            Console.WriteLine("Ingrese el numero del que quiere ver las tablas: ");
+            int.TryParse(Console.ReadLine(), out int tabla);
+            int i;
+            int resultado; 
+            for(i=0; i <=12 ; i++)
+            {
+                resultado = i * tabla;
+                Console.WriteLine($"El resultado de {tabla} x {i} = {resultado}");
+            }
         }
         static void Ejercicio16()
         {
-            
+            Console.WriteLine("Ingrese el numero en el que se va a iniciar: ");
+            int.TryParse(Console.ReadLine(), out int NumeroInicio);
+            Console.WriteLine("Ingrese el numero en el que se va a finalizar: ");
+            int.TryParse(Console.ReadLine(), out int NumeroFinal);
+
+            CalcularNumerosPrimos calcularNumerosPrimos = new CalcularNumerosPrimos (NumeroInicio,NumeroFinal);
         }
         static void Ejercicio17()
         {
-            
+            Console.WriteLine("Ingrese la cantidad de numeros que desea ver: ");
+            int.TryParse(Console.ReadLine(), out int CantidadNumeros);
+            if(CantidadNumeros <0)
+            {
+                Console.WriteLine("Los valores ingresados no son validos");
+                return;
+            }
+            SerieDeFibonacci serieDeFibonacci = new SerieDeFibonacci(CantidadNumeros);
         }
         static void Ejercicio18()
-        {
-            
+        {   
+            int n18 = 0;
+            int r18 = 0;
+            bool nValido = false;
+            bool rValido = false;
+
+            do
+            {
+                Console.Write("Ingrese el valor de n (Total de elementos): ");
+                nValido = int.TryParse(Console.ReadLine(), out n18);
+                
+                if (!nValido || n18 < 0)
+                {
+                    Console.WriteLine("Error: Debe ingresar un número entero positivo para 'n'.\n");
+                    nValido = false; 
+                }
+            } while (!nValido);
+
+            do
+            {
+                Console.Write("Ingrese el valor de r (Elementos por grupo): ");
+                rValido = int.TryParse(Console.ReadLine(), out r18);
+                
+                if (!rValido || r18 < 0)
+                {
+                    Console.WriteLine("Error: Debe ingresar un número entero positivo para 'r'.\n");
+                    rValido = false;
+                }
+                else if (n18 < r18)
+                {
+                    Console.WriteLine($"Error: 'r' no puede ser mayor que 'n' ({n18}). Intente de nuevo.\n");
+                    rValido = false; 
+                }
+            } while (!rValido);
+
+            Combinatoria.CalcularCombinacion(n18, r18);
         }
         static void Ejercicio19()
         {
-            
+            JuegoAdivinanza.Adivinanzas();
         }
         static void Ejercicio20()
         {
