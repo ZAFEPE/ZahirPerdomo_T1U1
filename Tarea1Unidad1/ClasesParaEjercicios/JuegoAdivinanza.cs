@@ -45,6 +45,11 @@ namespace Tarea1Unidad1.ClasesParaEjercicios
                 {
                     Ganador = true;
                 }
+                if(contadorIntentos ==7)
+                {
+                    Console.WriteLine("Has agotado tus intentos, MEJOR SUERTE LA PROXIMA!");
+                    return false;
+                }
 
             } while (!Ganador); 
 

@@ -253,7 +253,7 @@ namespace Tarea1Unidad1
             int.TryParse(Console.ReadLine(), out int Anio);
             Console.WriteLine("Ingrese el mes: ");
             int.TryParse(Console.ReadLine(), out int Mes);
-            Console.WriteLine("Ingrese el año: ");
+            Console.WriteLine("Ingrese el dia: ");
             int.TryParse(Console.ReadLine(), out int Dia);
 
             ValidarFecha.VerificarFechaReal(Dia,Mes,Anio);
@@ -270,7 +270,6 @@ namespace Tarea1Unidad1
             }
             Console.Clear();
             CajeroAutomatico.GestionRetiros(MontoARetirar);
-
 
         }
         static void Ejercicio15()
@@ -349,11 +348,112 @@ namespace Tarea1Unidad1
         }
         static void Ejercicio20()
         {
-            
+           Console.Clear();
+            Console.WriteLine("--- EJERCICIO 20: VALIDACIÓN DE CONTRASEÑA ---");
+            string contrasenia = "";
+            bool cumpleRequisitos = false;
+
+            do
+            {
+                Console.Write("Ingrese una contraseña a evaluar: ");
+                contrasenia = Console.ReadLine() ?? "";
+
+               
+                bool tieneMayuscula = false;
+                bool tieneMinuscula = false;
+                bool tieneNumero = false;
+                bool tieneEspecial = false;
+
+                
+                foreach (char c in contrasenia)
+                {
+                    if (char.IsUpper(c)) tieneMayuscula = true;
+                    else if (char.IsLower(c)) tieneMinuscula = true;
+                    else if (char.IsDigit(c)) tieneNumero = true;
+                    else if (!char.IsLetterOrDigit(c)) tieneEspecial = true; 
+                }
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                
+                if (contrasenia.Length < 8) Console.WriteLine(" -> Falta: Mínimo 8 caracteres.");
+                if (!tieneMayuscula) Console.WriteLine(" -> Falta: Al menos una letra MAYÚSCULA.");
+                if (!tieneMinuscula) Console.WriteLine(" -> Falta: Al menos una letra minúscula.");
+                if (!tieneNumero) Console.WriteLine(" -> Falta: Al menos un número.");
+                if (!tieneEspecial) Console.WriteLine(" -> Falta: Al menos un carácter especial (ej: @, #, $, *).");
+                Console.ResetColor();
+
+                cumpleRequisitos = contrasenia.Length >= 8 && tieneMayuscula && tieneMinuscula && tieneNumero && tieneEspecial;
+
+                if (!cumpleRequisitos)
+                {
+                    Console.WriteLine("Contraseña insegura. Intente de nuevo.\n");
+                }
+
+            } while (!cumpleRequisitos);
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n¡Éxito! La contraseña cumple con todos los estándares de seguridad.");
         }
         static void Ejercicio21()
         {
-            
+            Console.Clear();
+            Console.WriteLine("--- EJERCICIO 21: PATRÓN DE ASTERISCOS ---");
+            Console.WriteLine("1. Triángulo\n2. Triángulo Invertido\n3. Rombo\n4. Cuadrado Hueco\n5. Salir");
+            Console.Write("Elija un patrón: ");
+            int.TryParse(Console.ReadLine(), out int opcion);
+            if (opcion < 1 || opcion > 4) return;
+
+            Console.Write("Defina el tamaño del patrón (Filas/Líneas): ");
+            int.TryParse(Console.ReadLine(), out int n);
+            if (n <= 0) return;
+
+            Console.Clear();
+            switch (opcion)
+            {
+                case 1: // Triángulo normal
+                    for (int i = 1; i <= n; i++)
+                    {
+                        Console.WriteLine(new string('*', i));
+                    }
+                    break;
+
+                case 2: // Triángulo invertido
+                    for (int i = n; i >= 1; i--)
+                    {
+                        Console.WriteLine(new string('*', i));
+                    }
+                    break;
+
+                case 3: // Rombo
+                    if (n % 2 == 0) n++; 
+                    // Parte superior
+                    for (int i = 1; i <= n; i += 2)
+                    {
+                        Console.Write(new string(' ', (n - i) / 2));
+                        Console.WriteLine(new string('*', i));
+                    }
+                    // Parte inferior
+                    for (int i = n - 2; i >= 1; i -= 2)
+                    {
+                        Console.Write(new string(' ', (n - i) / 2));
+                        Console.WriteLine(new string('*', i));
+                    }
+                    break;
+
+                case 4: // Cuadrado Hueco
+                    for (int i = 1; i <= n; i++)
+                    {
+                        for (int j = 1; j <= n; j++)
+                        {
+                            if (i == 1 || i == n || j == 1 || j == n)
+                                Console.Write("* ");
+                            else
+                                Console.Write("  ");
+                        }
+                        Console.WriteLine();
+                    }
+                    break;
+            }
         }
         static void Ejercicio22()
         {
@@ -391,8 +491,6 @@ namespace Tarea1Unidad1
         {
             
         }
-
-
     }
 }
 
