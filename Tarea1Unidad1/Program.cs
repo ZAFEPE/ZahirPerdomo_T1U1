@@ -11,13 +11,13 @@ namespace Tarea1Unidad1
             // Ejercicio3();
             // Ejercicio4();
             // Ejercicio5();
-            Ejercicio6();
+            // Ejercicio6();
             // Ejercicio7();
             // Ejercicio8();
             // Ejercicio9();
             // Ejercicio10();
             // Ejercicio11();
-            // Ejercicio12();
+            Ejercicio12();
             // Ejercicio13();
             // Ejercicio14();
             // Ejercicio15();
@@ -143,7 +143,7 @@ namespace Tarea1Unidad1
         }
         static void Ejercicio6()
         {
-            Console.WriteLine("Ingrese el numero de la eleccion que desea");
+            Console.WriteLine("Ingrese el numero de la eleccion que desea: ");
             Console.WriteLine("1. Calcuar Area.\n2. Calcular Perimetro.\n3. Salir.");
             int.TryParse(Console.ReadLine(), out int eleccionCalculo);
             if(eleccionCalculo==3)return;
@@ -162,31 +162,94 @@ namespace Tarea1Unidad1
         }
         static void Ejercicio7()
         {
+            Console.WriteLine("Ingrese el numero de la eleccion que desea convertir: ");
+            Console.WriteLine("1. Bytes.\n2. Kilobytes.\n3. MegaBytes.\n4. GigaBytes.\n5. TeraBytes\n6. Salir");
+            int.TryParse(Console.ReadLine(), out int DatoBase);
+            if(DatoBase==6)return;
+            Console.Clear();
             
+            Console.WriteLine("Ingrese el número de la eleccion a la que desea convertir:");
+            Console.WriteLine("1. Bytes.\n2. Kilobytes.\n3. MegaBytes.\n4. GigaBytes.\n5. TeraBytes\n6. Salir");
+            int.TryParse(Console.ReadLine(), out int EleccionConversion);
+            if(EleccionConversion==6)return;
+            Console.Clear();
+
+            Console.WriteLine("Ingrese la cantidad a convertir:");
+            int.TryParse(Console.ReadLine(), out int CantidadIngresada);
+            if(EleccionConversion==6)return;
+
+            decimal resultado = CalculoConversionDatos.RegistroDeDatos(DatoBase,EleccionConversion,CantidadIngresada);
+
+            Console.WriteLine($"El resultado de el calculo es: {resultado:N10}");
         }
         static void Ejercicio8()
         {
-            
+            Console.WriteLine("Ingrese las horas trabajadas: ");
+            int.TryParse(Console.ReadLine(), out int HorasTrabajadas);
+            Console.WriteLine("Ingrese la tarifa por hora: ");
+            int.TryParse(Console.ReadLine(), out int TarifaPorHora);
+
+            if(TarifaPorHora<=0 || HorasTrabajadas<=0 )
+            {
+                Console.WriteLine("Los valores ingresados no son validos");
+                return;
+            }
+
+            decimal resultado = CalculoHorasPagadas.PagoTotal(HorasTrabajadas,TarifaPorHora);
+            Console.WriteLine($"El Pago Total es de: {resultado}");
+
         }
         static void Ejercicio9()
         {
+            Console.WriteLine("Ingrese el Lado #1");
+            decimal.TryParse(Console.ReadLine(), out decimal Lado1);
+            Console.WriteLine("Ingrese el Lado #2");
+            decimal.TryParse(Console.ReadLine(), out decimal Lado2);
+            Console.WriteLine("Ingrese el Lado #3");
+            decimal.TryParse(Console.ReadLine(), out decimal Lado3);
+
+            if(Lado1<=0 || Lado2<=0 || Lado3<=0)
+            {
+                Console.WriteLine("Los valores ingresados no son validos");
+                return;
+            }
+            string Resultado = DeterminarTipoTriangulo.DeterminarPorLados(Lado1,Lado2,Lado3);
             
+            Console.WriteLine($"El tipo de triangulo por sus lados y por sus angulos es: {Resultado}");
+
         }
         static void Ejercicio10()
         {
-            
+            Console.WriteLine("Ingrese su nota de 0 a 100: ");
+            int.TryParse(Console.ReadLine(), out int Nota);
+            if(Nota<0 || Nota >100)
+            {
+                Console.WriteLine("Los valores ingresados no son validos");
+                return;
+            }
+            AnalizarNota analizarNota = new AnalizarNota(Nota);
         }
         static void Ejercicio11()
         {
-            
+            Console.WriteLine("Ingrese el monto de compra: ");
+            decimal.TryParse(Console.ReadLine(), out decimal MontoAPagar);
+            Console.Clear();
+            DeterminarDescuentos determinarDescuentos = new DeterminarDescuentos(MontoAPagar);
+
         }
         static void Ejercicio12()
         {
-            
+            Console.WriteLine("Ingrese el año: ");
+            int.TryParse(Console.ReadLine(), out int Anio);
+            Console.WriteLine("Ingrese el mes: ");
+            int.TryParse(Console.ReadLine(), out int Mes);
+
+            DiasDelMes.CalcularDias(Anio,Mes);
+
         }
         static void Ejercicio13()
         {
-            
+            Console.WriteLine("Ingrese");
         }
         static void Ejercicio14()
         {

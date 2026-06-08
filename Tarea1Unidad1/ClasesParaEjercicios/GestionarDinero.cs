@@ -13,8 +13,6 @@ namespace Tarea1Unidad1.ClasesParaEjercicios
             int Cantidad5=0;
             int Cantidad2=0;
             int Cantidad1=0;
-
-
             
             if(CantidadDinero > 0)
             {
