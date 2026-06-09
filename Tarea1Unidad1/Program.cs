@@ -348,8 +348,6 @@ namespace Tarea1Unidad1
         }
         static void Ejercicio20()
         {
-           Console.Clear();
-            Console.WriteLine("--- EJERCICIO 20: VALIDACIÓN DE CONTRASEÑA ---");
             string contrasenia = "";
             bool cumpleRequisitos = false;
 
@@ -396,8 +394,6 @@ namespace Tarea1Unidad1
         }
         static void Ejercicio21()
         {
-            Console.Clear();
-            Console.WriteLine("--- EJERCICIO 21: PATRÓN DE ASTERISCOS ---");
             Console.WriteLine("1. Triángulo\n2. Triángulo Invertido\n3. Rombo\n4. Cuadrado Hueco\n5. Salir");
             Console.Write("Elija un patrón: ");
             int.TryParse(Console.ReadLine(), out int opcion);
@@ -457,8 +453,6 @@ namespace Tarea1Unidad1
         }
         static void Ejercicio22()
         {
-            Console.Clear();
-            Console.WriteLine("--- EJERCICIO 22: CALCULADORA CON MENÚ (Operaciones Encadenadas) ---");
             double ultimoResultado = 0;
             bool primerCalculo = true;
             int op = 0;
@@ -514,38 +508,423 @@ namespace Tarea1Unidad1
         }
         static void Ejercicio23()
         {
+            Console.Write("¿Cuántas calificaciones desea ingresar?: ");
+            int.TryParse(Console.ReadLine(), out int n);
+            if (n <= 0) return;
+
+            double[] notas = new double[n];
+            double suma = 0;
+            int aprobados = 0, reprobados = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                do
+                {
+                    Console.Write($"Nota del estudiante #{i + 1} (0-100): ");
+                    double.TryParse(Console.ReadLine(), out notas[i]);
+                } while (notas[i] < 0 || notas[i] > 100);
+
+                suma += notas[i];
+                if (notas[i] >= 65) aprobados++; 
+                else reprobados++;
+            }
+
+            double promedio = suma / n;
+            double notaMaxima = notas.Max();
+            double notaMinima = notas.Min();
+
             
+            double sumaVarianza = 0;
+            foreach (double nota in notas)
+            {
+                sumaVarianza += Math.Pow(nota - promedio, 2);
+            }
+            double desviacionEstandar = Math.Sqrt(sumaVarianza / n);
+
+            Console.WriteLine("\n--- ESTADÍSTICAS FINALES ---");
+            Console.WriteLine($"Promedio General: {promedio:N2}%");
+            Console.WriteLine($"Calificación Máxima: {notaMaxima}%");
+            Console.WriteLine($"Calificación Mínima: {notaMinima}%");
+            Console.WriteLine($"Cantidad Aprobados: {aprobados}");
+            Console.WriteLine($"Cantidad Reprobados: {reprobados}");
+            Console.WriteLine($"Desviación Estándar: {desviacionEstandar:N4}");
         }
+
         static void Ejercicio24()
         {
+            int[] arreglo = new int[10];
+
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write($"Ingrese entero para posición [{i}]: ");
+                int.TryParse(Console.ReadLine(), out arreglo[i]);
+            }
+
+           
+            Console.Write("\nElementos en posiciones pares del índice: ");
+            for (int i = 0; i < 10; i += 2)
+            {
+                Console.Write($"[{i}]:{arreglo[i]}  ");
+            }
+            Console.WriteLine();
+
             
+            int[] copiaBurbuja = (int[])arreglo.Clone();
+            
+            for (int i = 0; i < copiaBurbuja.Length - 1; i++)
+            {
+                for (int j = 0; j < copiaBurbuja.Length - 1 - i; j++)
+                {
+                    if (copiaBurbuja[j] > copiaBurbuja[j + 1])
+                    {
+                        int temp = copiaBurbuja[j];
+                        copiaBurbuja[j] = copiaBurbuja[j + 1];
+                        copiaBurbuja[j + 1] = temp;
+                    }
+                }
+            }
+
+            Console.WriteLine($"Arreglo ordenado ascendentemente (Burbuja): {string.Join(", ", copiaBurbuja)}");
+            
+            int segundoMayor = copiaBurbuja[copiaBurbuja.Length - 2];
+            Console.WriteLine($"Segundo elemento mayor detectado: {segundoMayor}");
+
+            
+            Console.Write("\nIngrese un número a buscar en el arreglo original: ");
+            int.TryParse(Console.ReadLine(), out int buscar);
+            bool encontrado = false;
+            for (int i = 0; i < 10; i++)
+            {
+                if (arreglo[i] == buscar)
+                {
+                    Console.WriteLine($"¡Encontrado! El número {buscar} está en el índice original [{i}].");
+                    encontrado = true;
+                    break;
+                }
+            }
+            if (!encontrado) Console.WriteLine("El número no se encuentra en el arreglo.");
         }
+
         static void Ejercicio25()
         {
-            
+            Console.Write("Ingrese el tamaño N del arreglo: ");
+            int.TryParse(Console.ReadLine(), out int n);
+            if (n <= 0) return;
+
+            int[] arreglo = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                arreglo[i] = i + 1; 
+            }
+
+            Console.WriteLine($"Arreglo base generado: {string.Join(", ", arreglo)}");
+            Console.WriteLine("\n1. Rotar K posiciones a la izquierda\n2. Rotar K posiciones a la derecha\n3. Invertir el arreglo");
+            Console.Write("Seleccione una opción: ");
+            int.TryParse(Console.ReadLine(), out int opcion);
+
+            if (opcion == 3)
+            {
+                Array.Reverse(arreglo);
+                Console.WriteLine($"Arreglo invertido: {string.Join(", ", arreglo)}");
+                return;
+            }
+
+            Console.Write("Ingrese la cantidad K de posiciones a rotar: ");
+            int.TryParse(Console.ReadLine(), out int k);
+            k = k % n;
+
+            int[] resultado = new int[n];
+
+            if (opcion == 1) 
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    resultado[i] = arreglo[(i + k) % n];
+                }
+            }
+            else if (opcion == 2) 
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    resultado[(i + k) % n] = arreglo[i];
+                }
+            }
+
+            Console.WriteLine($"Arreglo resultante tras rotación: {string.Join(", ", resultado)}");
         }
+
         static void Ejercicio26()
         {
-            
+            Random rnd = new Random();
+            int[] aleatorios = new int[20];
+            int[] frecuencias = new int[11]; 
+
+            Console.Write("Números generados al azar: ");
+            for (int i = 0; i < 20; i++)
+            {
+                aleatorios[i] = rnd.Next(1, 11);
+                Console.Write(aleatorios[i] + " ");
+                frecuencias[aleatorios[i]]++; 
+            }
+            Console.WriteLine("\n");
+
+            int maxFrecuencia = -1, minFrecuencia = 99;
+            int masFrecuente = 0, menosFrecuente = 0;
+
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.WriteLine($"Frecuencia del número {i}: {frecuencias[i]} veces.");
+                
+               
+                if (frecuencias[i] > maxFrecuencia)
+                {
+                    maxFrecuencia = frecuencias[i];
+                    masFrecuente = i;
+                }
+                
+                if (frecuencias[i] < minFrecuencia && frecuencias[i] > 0)
+                {
+                    minFrecuencia = frecuencias[i];
+                    menosFrecuente = i;
+                }
+            }
+
+            Console.WriteLine($"\nEl número MÁS frecuente es el: {masFrecuente} ({maxFrecuencia} veces).");
+            Console.WriteLine($"El número MENOS frecuente es el: {menosFrecuente} ({minFrecuencia} veces).");
         }
+
         static void Ejercicio27()
         {
-            
+            double[] temp = new double[7];
+            string[] dias = { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo" };
+            double suma = 0;
+
+            for (int i = 0; i < 7; i++)
+            {
+                Console.Write($"Ingrese temperatura para el {dias[i]} (°C): ");
+                double.TryParse(Console.ReadLine(), out temp[i]);
+                suma += temp[i];
+            }
+
+            double promedioSemanal = suma / 7;
+            double maxTemp = temp.Max();
+            double minTemp = temp.Min();
+            string diaCaluroso = dias[Array.IndexOf(temp, maxTemp)];
+            string diaFrio = dias[Array.IndexOf(temp, minTemp)];
+
+            Console.WriteLine("\n--- REPORTE CLIMÁTICO SEMANAL ---");
+            Console.WriteLine($"Promedio Semanal: {promedioSemanal:N2}°C");
+            Console.WriteLine($"Días que superaron el promedio:");
+            for (int i = 0; i < 7; i++)
+            {
+                if (temp[i] > promedioSemanal) Console.WriteLine($" -> {dias[i]} ({temp[i]}°C)");
+            }
+
+            Console.WriteLine($"Día más caluroso: {diaCaluroso} ({maxTemp}°C)");
+            Console.WriteLine($"Día más frío: {diaFrio} ({minTemp}°C)");
+
+            Console.WriteLine("\nVariación entre días consecutivos:");
+            for (int i = 0; i < 6; i++)
+            {
+                double variacion = temp[i + 1] - temp[i];
+                Console.WriteLine($" -> De {dias[i]} a {dias[i + 1]}: {variacion:+0.0;-0.0;0.0}°C");
+            }
         }
+
         static void Ejercicio28()
         {
-            
+            Console.Write("Cantidad de estudiantes N a evaluar: ");
+            int.TryParse(Console.ReadLine(), out int n);
+            if (n <= 0) return;
+
+            double[,] matrizNotas = new double[n, 3];
+            double[] promedioEstudiantes = new double[n];
+            double[] sumaParciales = new double[3];
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine($"\nNotas del Estudiante #{i + 1}:");
+                double sumaEstudiante = 0;
+                for (int j = 0; j < 3; j++)
+                {
+                    do
+                    {
+                        Console.Write($"  -> Parcial {j + 1} (0-100): ");
+                        double.TryParse(Console.ReadLine(), out matrizNotas[i, j]);
+                    } while (matrizNotas[i, j] < 0 || matrizNotas[i, j] > 100);
+
+                    sumaEstudiante += matrizNotas[i, j];
+                    sumaParciales[j] += matrizNotas[i, j];
+                }
+                promedioEstudiantes[i] = sumaEstudiante / 3;
+            }
+
+            Console.Clear();
+            Console.WriteLine("--- RESUMEN GENERAL DE RENDIMIENTO ---");
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine($"Estudiante #{i + 1} - Promedio: {promedioEstudiantes[i]:N2}%");
+            }
+
+            Console.WriteLine("\nPromedios globales por Parcial:");
+            for (int j = 0; j < 3; j++)
+            {
+                double promParcial = sumaParciales[j] / n;
+                Console.WriteLine($" -> Parcial {j + 1}: {promParcial:N2}%");
+            }
+
+            int mejorEstudianteIndex = Array.IndexOf(promedioEstudiantes, promedioEstudiantes.Max());
+            Console.WriteLine($"\nEstudiante con mejor rendimiento: Estudiante #{mejorEstudianteIndex + 1} ({promedioEstudiantes.Max():N2}%)");
+
+          
+            double peorPromedioParcial = sumaParciales.Min() / n;
+            int parcialDificilIndex = Array.IndexOf(sumaParciales, sumaParciales.Min());
+            Console.WriteLine($"El parcial más difícil fue el: Parcial {parcialDificilIndex + 1} (Promedio más bajo: {peorPromedioParcial:N2}%)");
         }
+
         static void Ejercicio29()
         {
-            
+            char[,] tablero = { { '1', '2', '3' }, { '4', '5', '6' }, { '7', '8', '9' } };
+            int jugadorActual = 1;
+            int movimientos = 0;
+            bool juegoTerminado = false;
+
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("=== TIC-TAC-TOE ===");
+                Console.WriteLine($" Jugador 1 [X]  -  Jugador 2 [O]\n");
+                Console.WriteLine($"     {tablero[0, 0]} | {tablero[0, 1]} | {tablero[0, 2]} ");
+                Console.WriteLine("    ---|---|---");
+                Console.WriteLine($"     {tablero[1, 0]} | {tablero[1, 1]} | {tablero[1, 2]} ");
+                Console.WriteLine("    ---|---|---");
+                Console.WriteLine($"     {tablero[2, 0]} | {tablero[2, 1]} | {tablero[2, 2]} \n");
+
+                char marca = (jugadorActual == 1) ? 'X' : 'O';
+                Console.Write($"Jugador {jugadorActual} ({marca}), elija una casilla disponible: ");
+                int.TryParse(Console.ReadLine(), out int seleccion);
+
+                
+                bool movimientoValido = false;
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        if (tablero[i, j] == seleccion.ToString()[0])
+                        {
+                            tablero[i, j] = marca;
+                            movimientoValido = true;
+                            movimientos++;
+                        }
+                    }
+                }
+
+                if (!movimientoValido)
+                {
+                    Console.WriteLine("Casilla ocupada o inválida. Presione cualquier tecla...");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                
+                bool ganador = false;
+                for (int i = 0; i < 3; i++)
+                {
+                    if (tablero[i, 0] == tablero[i, 1] && tablero[i, 1] == tablero[i, 2]) ganador = true; // Filas
+                    if (tablero[0, i] == tablero[1, i] && tablero[1, i] == tablero[2, i]) ganador = true; // Columnas
+                }
+                if (tablero[0, 0] == tablero[1, 1] && tablero[1, 1] == tablero[2, 2]) ganador = true; // Diagonal Principal
+                if (tablero[0, 2] == tablero[1, 1] && tablero[1, 1] == tablero[2, 0]) ganador = true; // Diagonal Secundaria
+
+                if (ganador)
+                {
+                    Console.Clear();
+                    Console.WriteLine($"\n¡FELICIDADES! El Jugador {jugadorActual} ({marca}) ha ganado la partida.");
+                    juegoTerminado = true;
+                }
+                else if (movimientos == 9)
+                {
+                    Console.Clear();
+                    Console.WriteLine("\n¡Empate! Se han llenado todas las casillas.");
+                    juegoTerminado = true;
+                }
+                else
+                {
+                    
+                    jugadorActual = (jugadorActual == 1) ? 2 : 1;
+                }
+
+            } while (!juegoTerminado);
         }
+
         static void Ejercicio30()
-        {
-            
+        {           
+            string[] nombres = { "Arroz (lb)", "Frijoles (lb)", "Azúcar (lb)", "Café (paquete)", "Harina (lb)" };
+            int[] codigos = { 101, 102, 103, 104, 105 };
+            int[] cantidades = { 50, 40, 30, 25, 60 };
+            double[] precios = { 15.50, 22.00, 13.00, 45.00, 11.50 };
+
+            int opcionMenu = 0;
+            do
+            {
+                Console.WriteLine("\n=== SISTEMA DE INVENTARIO (5 PRODUCTOS) ===");
+                Console.WriteLine("1. Mostrar Todo el Inventario\n2. Buscar Producto por Código\n3. Actualizar Stock/Cantidad\n4. Calcular Valor Total Financiero\n0. Volver al Menú Principal");
+                Console.Write("Seleccione una opción: ");
+                int.TryParse(Console.ReadLine(), out opcionMenu);
+
+                switch (opcionMenu)
+                {
+                    case 1:
+                        Console.Clear();
+                        Console.WriteLine("CÓDIGO\t| NOMBRE\t\t| STOCK\t| PRECIO UNITARIO");
+                        Console.WriteLine("---------------------------------------------------------");
+                        for (int i = 0; i < 5; i++)
+                        {
+                            Console.WriteLine($"{codigos[i]}\t| {nombres[i].PadRight(15)}\t| {cantidades[i]}\t| L. {precios[i]:N2}");
+                        }
+                        break;
+
+                    case 2:
+                        Console.Write("Ingrese el código del producto a buscar (101-105): ");
+                        int.TryParse(Console.ReadLine(), out int buscarCod);
+                        int idx = Array.IndexOf(codigos, buscarCod);
+                        if (idx != -1)
+                        {
+                            Console.WriteLine($"\n[Producto Encontrado]: {nombres[idx]} | Stock: {cantidades[idx]} unidades | Precio: L. {precios[idx]:N2}");
+                        }
+                        else Console.WriteLine("Código no registrado.");
+                        break;
+
+                    case 3:
+                        Console.Write("Ingrese código del producto a actualizar (101-105): ");
+                        int.TryParse(Console.ReadLine(), out int modCod);
+                        int modIdx = Array.IndexOf(codigos, modCod);
+                        if (modIdx != -1)
+                        {
+                            Console.Write($"Cantidad actual de {nombres[modIdx]} es {cantidades[modIdx]}. Ingrese nuevo stock total: ");
+                            int.TryParse(Console.ReadLine(), out cantidades[modIdx]);
+                            Console.WriteLine("¡Stock actualizado con éxito!");
+                        }
+                        else Console.WriteLine("Código no registrado.");
+                        break;
+
+                    case 4:
+                        Console.Clear();
+                        double valorTotalGeneral = 0;
+                        for (int i = 0; i < 5; i++)
+                        {
+                            double valorProducto = cantidades[i] * precios[i];
+                            valorTotalGeneral += valorProducto;
+                            Console.WriteLine($" -> {nombres[i].PadRight(15)}: L. {valorProducto:N2}");
+                        }
+
+                        Console.WriteLine($"VALOR MONETARIO TOTAL DEL INVENTARIO: L. {valorTotalGeneral:N2}");
+                        break;
+                }
+
+            } while (opcionMenu != 0);
         }
     }
 }
-
 
 
