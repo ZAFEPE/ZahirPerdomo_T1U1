@@ -24,7 +24,7 @@ namespace Tarea1Unidad1
             // Ejercicio16();
             // Ejercicio17();
             // Ejercicio18();
-            Ejercicio19();
+            // Ejercicio19();
             // Ejercicio20();
             // Ejercicio21();
             // Ejercicio22();
@@ -926,5 +926,3 @@ namespace Tarea1Unidad1
         }
     }
 }
-
-
